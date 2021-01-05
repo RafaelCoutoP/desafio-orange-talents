@@ -1,42 +1,36 @@
-package com.rafaelcdev.desafioorange.entities;
+package com.rafaelcdev.desafioorange.dto;
 
 import java.io.Serializable;
 import java.time.Instant;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.rafaelcdev.desafioorange.entities.User;
 
-@Entity
-@Table(name = "tb_user")
-public class User implements Serializable{
+public class UserDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-
-	@Column(unique = true)
 	private String email;
 	private String cpf;
-	
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant dataDeNascimento;
 	
-	public User() {
+	public UserDTO() {
 	}
 
-	public User(Long id, String nome, String email, String cpf, Instant dataDeNascimento) {
-		super();
+	public UserDTO(Long id, String nome, String email, String cpf, Instant dataDeNascimento) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.dataDeNascimento = dataDeNascimento;
+	}
+	
+	public UserDTO(User entity) {
+		id = entity.getId();
+		nome = entity.getNome();
+		email = entity.getEmail();
+		cpf = entity.getCpf();
+		dataDeNascimento = entity.getDataDeNascimento();
 	}
 
 	public Long getId() {
