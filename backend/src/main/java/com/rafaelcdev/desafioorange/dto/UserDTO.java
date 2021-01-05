@@ -3,15 +3,30 @@ package com.rafaelcdev.desafioorange.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
+
 import com.rafaelcdev.desafioorange.entities.User;
 
 public class UserDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	
+	@Size(min = 5, max = 60, message = "min 5 - max 60")
+	@NotBlank(message = "Campo requerido")
 	private String nome;
+	
+	@NotBlank(message = "Campo requerido")
+	@Email(message = "Favor entrar com email válido")
 	private String email;
+	
+	@NotBlank(message = "Campo requerido")
 	private String cpf;
+	
+	@PastOrPresent(message = "Data do produto não pode ser futura")
 	private Instant dataDeNascimento;
 	
 	public UserDTO() {
