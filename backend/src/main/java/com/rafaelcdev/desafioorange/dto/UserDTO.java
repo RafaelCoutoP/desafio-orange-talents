@@ -9,7 +9,9 @@ import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 
 import com.rafaelcdev.desafioorange.entities.User;
+import com.rafaelcdev.desafioorange.services.validator.UserInsertValid;
 
+@UserInsertValid
 public class UserDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
